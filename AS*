@@ -1,0 +1,353 @@
+
+import React from 'react';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Box } from '@mui/material';
+
+const ASOServiceFees = () => {
+
+    // Custom styles
+    const headerCellStyle = {
+        backgroundColor: '#f0f0f0', // grey background for header cells
+        fontWeight: 'bold',
+    };
+    const sectionSpacingStyle = {
+        marginTop: '24px', // Spacing between sections
+    };
+    const underlinedHeaderStyle = {
+        textDecoration: 'underline',
+        textDecorationThickness: '2px', // Makes the underline thicker
+    };
+
+
+    const contract_numbers = [52111, 52112, 52113, 52214, 52115];
+    const client_ref = '2402 - 16504295XF';
+    const business_no = '10582485214PG005';
+    const bankAccount = {
+        transfer_no: '00140574',
+        account_no: '1006589',
+    };
+    const prevBalance = undefined;
+    const payments = undefined; 
+    const carriedForward = undefined; 
+    const serviceFees = undefined; 
+    const serviceCredit = undefined; 
+    const totalTaxes = undefined; 
+    const totalBalance = undefined; 
+ 
+
+
+
+    // Replace with actual table data
+
+    const feesData = [
+
+        { feeElement: 'Fee per Digital Claim Processed - Basic Services Categories', period: '07/01/2023 - 07/31/2023', contract: '3.2.1 a) i', servicesProvided: '--', cost: '$150.72' },
+        { feeElement: 'Fee per Digital Claim Processed - Major & Orthodontic Services Categories', period: '11/12/2022 - 10/23/2023', contract: '3.2.1 a) ii', servicesProvided: '--', cost: '$390.00' }
+        // ... add other fee data rows
+
+    ];
+
+    const creditData = [
+
+        { creditElement: 'Contribution Service Fee', period: '07/01/2023 - 07/31/2023', rate: '5.2%', contract: '123455', amount: '$101.42' },
+        { creditElement: 'Test Service Fee', period: '11/12/2022 - 10/23/2023', rate: '2.52%', contract: '1242555', amount: '$376.00' }
+
+        // ... add other credit data rows
+
+    ];
+
+    const taxesData = [
+
+        { taxType: 'Federal GST', taxId: 'R123456789', rate: '5.0000%', amount: '$0.00' },
+
+        { taxType: 'QST/QST', taxId: 'R123456789', rate: '9.9750%', amount: '$0.00' },
+
+        // ... add other tax data rows
+
+    ];
+ 
+
+        return (
+
+            <Paper sx={{ padding: '20px' }}>
+
+                <Typography sx={{ marginLeft: '450px' }} variant="h4" gutterBottom component="div">
+
+                    Public DentalCare Plan
+
+                </Typography>
+
+                {/* Initial Section Missing Above Carried Forward Balance */}
+
+                <Box sx={sectionSpacingStyle}>
+
+                    <Typography variant="h6" component="div" sx={headerCellStyle}>
+
+                        Client Information
+
+                    </Typography>
+
+
+                    <Box sx={{ display: 'flex', gap: '12px', marginBottom: '10px', flexWrap: 'wrap' }}>
+                        <Typography variant="body1" component="div">PSDCP Contract #:</Typography>
+                        {contract_numbers.map((contract, index) => (
+                        <Typography key={index} variant="body1" component="div">
+
+                            {contract}
+
+                        </Typography>
+                    
+                    ))}
+                    </Box>
+
+
+                    <Box sx={{ display: 'flex', gap: '10px', marginBottom: '10px', flexWrap: 'wrap' }}>
+                        <Typography variant="body1" component="div">Client Reference No: {client_ref}</Typography>
+
+                    </Box>
+
+                    <Box sx={{ display: 'flex', gap: '10px', marginBottom: '10px', flexWrap: 'wrap' }}>
+                        <Typography variant="body1" component="div">Procurement Business No: {business_no}</Typography>
+
+                    </Box>
+
+                    <Box sx={{ display: 'flex', gap: '10px', marginBottom: '10px', flexWrap: 'wrap' }}>
+                        <Typography variant="body1" component="div">Payable To: Canada Life Assurance Co</Typography>
+
+                    </Box>
+
+                    <Box sx={{ display: 'flex', gap: '10px', marginBottom: '10px', flexWrap: 'wrap' }}>
+                        <Typography variant="body1" component="div">Transfer To: {bankAccount.transfer_no}</Typography>
+                        <Typography variant="body1" component="div">Bank Account: {bankAccount.account_no}</Typography>
+
+                    </Box>
+
+                    <Box sx={{ display: 'flex', gap: '10px', marginBottom: '10px', flexWrap: 'wrap' }}>
+                        <Typography variant="body1" component="div">Previous Balance</Typography>
+                        <Typography variant="body1" component="div">{prevBalance ? '${prevBalance}' : '$0.00'}</Typography>
+                        
+
+                    </Box>
+
+                    <Box sx={{ display: 'flex', gap: '10px', marginBottom: '10px', flexWrap: 'wrap' }}>
+                        <Typography variant="body1" component="div">Payments</Typography>
+                        <Typography variant="body1" component="div">{payments ? '${payments}' : '$0.00'}</Typography>
+
+
+                    </Box>
+
+
+
+
+
+                    
+
+                    {/* Placeholder for the initial section content */}
+
+                </Box>
+
+                {/* Carried Forward Balance Section */}
+
+                <Box sx={sectionSpacingStyle}>
+
+                    <Typography variant="h6" component="div" sx={headerCellStyle}>
+
+                        Carried Forward Balance                         {carriedForward ? '${carriedForward}' : '$0.00'}
+
+                    </Typography>
+
+                    {/* Actual content for Carried Forward Balance */}
+
+
+                </Box>
+
+                {/* Service Fee Elements Section */}
+
+                <TableContainer component={Box} sx={sectionSpacingStyle}>
+
+                    <Table aria-label="ASO Service Fees Table">
+
+                        <TableHead>
+
+                            <TableRow>
+
+                                <TableCell sx={{ ...headerCellStyle, ...underlinedHeaderStyle }}>Basis of Service Fee Element</TableCell>
+
+                                <TableCell sx={{ ...headerCellStyle, ...underlinedHeaderStyle }}>Contract </TableCell>
+
+                                <TableCell sx={{ ...headerCellStyle, ...underlinedHeaderStyle }}>Rate</TableCell>
+
+                                <TableCell sx={{ ...headerCellStyle, ...underlinedHeaderStyle }}>Services Provided</TableCell>
+
+                                <TableCell sx={{ ...headerCellStyle, ...underlinedHeaderStyle }}>Cost</TableCell>
+
+                            </TableRow>
+
+                        </TableHead>
+
+                        <TableBody>
+
+                            {/* Rows for each service fee element */}
+
+                            {/* Rows for each service fee element */}
+                            {feesData.map((fee, index) => (
+                                <TableRow key={index}>
+                                    <><TableCell>{fee.feeElement}</TableCell><TableCell>{fee.period}</TableCell>
+                                        <TableCell>{fee.contract}</TableCell><TableCell>{fee.servicesProvided}</TableCell><TableCell>{fee.cost}</TableCell></>
+                                </TableRow>
+                                //    { feeElement: 'Fee per Digital Claim Processed - Basic Services Categories', period: '07/01/2023 - 07/31/2023', contract: '3.2.1 a) i', servicesProvided: '--', cost: '$150.72' },
+                            ))}
+
+                         
+                        </TableBody>
+
+                    </Table>
+
+                </TableContainer>
+
+                {/* Additional sections like Service Credit Elements, Taxes, etc., should follow the same pattern of customization. */}
+
+
+                <Box sx={sectionSpacingStyle}>
+
+                    <Typography variant="h6" component="div" sx={headerCellStyle}>
+
+                        Total Service Fees                        {serviceFees ? '${serviceFees}' : '$0.00'}
+
+                    </Typography>
+
+                    {/* Actual content for Carried Forward Balance */}
+
+
+                </Box>
+
+
+                <TableContainer component={Box} sx={sectionSpacingStyle}>
+
+                    <Table aria-label="ASO Service Fees Table">
+
+                        <TableHead>
+
+                            <TableRow>
+
+                                <TableCell sx={{ ...headerCellStyle, ...underlinedHeaderStyle }}>Service Credit Element</TableCell>
+
+                                <TableCell sx={{ ...headerCellStyle, ...underlinedHeaderStyle }}>Period of Fee Credit</TableCell>
+
+                                <TableCell sx={{ ...headerCellStyle, ...underlinedHeaderStyle }}>Contract</TableCell>
+
+                                <TableCell sx={{ ...headerCellStyle, ...underlinedHeaderStyle }}>Credit%</TableCell>
+
+                                <TableCell sx={{ ...headerCellStyle, ...underlinedHeaderStyle }}>Amount</TableCell>
+
+                            </TableRow>
+
+                        </TableHead>
+
+                        <TableBody>
+
+                            {/* Rows for each service fee element */}
+
+                            {/* Rows for each service fee element */}
+                            {creditData.map((credit, index) => (
+                                <TableRow key={index}>
+                                    <><TableCell>{credit.creditElement}</TableCell><TableCell>{credit.period}</TableCell>
+                                        <TableCell>{credit.rate}</TableCell><TableCell>{credit.contract}</TableCell><TableCell>{credit.amount}</TableCell></>
+                                </TableRow>
+                                //    { creditElement: 'Contribution Service Fee', period: '07/01/2023 - 07/31/2023', rate: '5.2%', contract: '123455', amount: '$101.42' },
+                            ))}
+
+                        </TableBody>
+
+                    </Table>
+
+                </TableContainer>
+
+
+
+
+
+                <Box sx={sectionSpacingStyle}>
+
+                    <Typography variant="h6" component="div" sx={headerCellStyle}>
+
+                        Total Service Credit                       {serviceCredit ? '${serviceCredit}' : '$0.00'}
+
+                    </Typography>
+
+                    {/* Actual content for Carried Forward Balance */}
+
+
+                </Box>
+
+                <Box sx={sectionSpacingStyle}>
+
+                    <Typography variant="h6" component="div" sx={headerCellStyle}>
+
+                        Total Service Fees                        {serviceFees ? '${serviceFees}' : '$0.00'}
+
+                    </Typography>
+
+                    {/* Actual content for Carried Forward Balance */}
+
+                </Box>
+
+
+                <TableContainer component={Box} sx={sectionSpacingStyle}>
+
+                    <Table aria-label="ASO Service Fees Table">
+
+                       
+                        <TableBody>
+
+                            {/* Rows for each service fee element */}
+                            {taxesData.map((tax, index) => (
+                                <TableRow key={index}>
+                                <><TableCell>{tax.taxType}</TableCell><TableCell>{tax.rate}</TableCell>
+                                        <TableCell>{tax.amount}</TableCell></>
+                                </TableRow>
+
+                            ))}
+
+                        </TableBody>
+
+                    </Table>
+
+                </TableContainer>
+
+
+                <Box sx={sectionSpacingStyle}>
+
+                    <Typography variant="h6" component="div" sx={headerCellStyle}>
+
+                        Total Taxes                     {totalTaxes ? '${totalTaxes}' : '$0.00'}
+
+                    </Typography>
+
+                    {/* Actual content for Carried Forward Balance */}
+
+                </Box>
+
+
+                <Box sx={sectionSpacingStyle}>
+
+                    <Typography variant="h6" component="div" sx={headerCellStyle}>
+
+                        Total Balance                     {totalBalance ? '${totalBalance}' : '$0.00'}
+
+                    </Typography>
+
+                    {/* Actual content for Carried Forward Balance */}
+
+
+
+                </Box>
+
+
+
+            </Paper>
+
+        );
+
+    };
+
+    export default ASOServiceFees;
