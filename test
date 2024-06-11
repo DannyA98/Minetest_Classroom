@@ -1,0 +1,21 @@
+ cursor.execute(f"""
+            INSERT INTO {schema}.{table_name} (GH23BENCAPCAPSPAYDDAILYBKUId,RMT_REC_TYPE,RMT_DATE,RMT_OFF_NBR,RMT_PLCY,RMT_DIV,RMT_CLS,RMT_INCURR_DT,RMT_POOLING_IND
+      ,RMT_EMP_ID,RMT_FNAME,RMT_REL,RMT_CLM_NBR,RMT_TRANS,RMT_PLCY_TYPE,RMT_INV_NBR,RMT_DOB,RMT_DT_REC,RMT_PAID_PLCY,RMT_PAID_DIV,RMT_PAID_CLS,RMT_EE_BANK_ID
+      ,RMT_NBR,RMT_EE_FNAME,RMT_EE_ZIP,RMT_SEX_EE,RMT_EE_ST,RMT_PROV_ST,RMT_PROV_TYPE,RMT_PROV_ZIP,RMT_SEX,RMT_RPT_PLCY,RMT_RPT_DIV,RMT_RPT_CLS,RMT_DT_PEND_CONS
+      ,RMT_COB,RMT_LNAME_2,RMT_CL_SERV_CD,RMT_SERVICE_CD,RMT_FST_DT,RMT_PAY_CD,RMT_NON_DUPE,RMT_CHARGE,RMT_NC_AMT,RMT_BASE_COV_AMT,RMT_BASE_DED_AMT,RMT_BASE_DED_DESC
+      ,RMT_BASE_PCT,RMT_BASE_WD_PAY ,RMT_BASE_AMT ,RMT_MM_COV_AMT ,RMT_MM_DED_AMT ,RMT_MM_WD_PAY,RMT_MM_AMT,RMT_MM_DED_DESC,RMT_MM_PCT,RMT_BASE_OI_AMT,RMT_MM_OI_AMT
+      ,RMT_CR_RES_AMT,RMT_DFT_NBR,RMT_OVR_CD,RMT_REMARK_CD,RMT_BANK_CD,RMT_COB_CD,RMT_SIN_NBR,RMT_FIRST_SUBSEQ,RMT_PAY_LOC,RMT_SAV_TYPE,RMT_DEP_NBR,RMT_POOLING_AMT
+      ,RMT_CAUSE,RMT_LST_DT,RMT_SUP_WD_PAY,RMT_SUP_AMT,RMT_PROD_CODE,RMT_DIS_CD,RMT_OCP_CD,RMT_PROV_SCRN_NBR,RMT_PROV_TEL_NBR,RMT_DIAG,RMT_PROV_TIN,RMT_PROV_NAME
+      ,RMT_PROV_ID_TYPE,RMT_OI_CON_AMT,RMT_ADJ_NBR,RMT_SUB_ACCT_CD,RMT_TYPE,RMT_CLIENT_SIZE,RMT_BASE_SCHED_AMT,RMT_MM_SCHED_AMT,RMT_PROV_ASP,RMT_PROV_WARD,RMT_EFT_IND
+      ,RMT_TIME,RMT_CTL_NBR_CONS_DFT,RMT_DRAFT_AMT,RMT_EE_BANK_ACCT,RMT_DLR_CLM_NBR,RMT_LT_BEG_DT,RMT_LT_TERM_DT,RMT_LT_MAX_EXP_DT,RMT_TEETH,RMT_PPC_CD,RMT_SURFACE_CD
+      ,RMT_EE_ADDR,RMT_EE_CITY,RMT_PROV_ADDR,RMT_DINN,RMT_CIDE,RMT_CALI,ISRT_TSTP,ISRT_USR,RMT_EE_LNAME)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?
+      ,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?
+      ,?,?,?,?,?,?,?,?,?)
+        """,index,_row[0],_row[1],_row[2],_row[3],_row[4],_row[5],_row[6],_row[7],_row[8],_row[9],_row[10],_row[11],_row[12],_row[13],_row[14],_row[15],_row[16]
+        ,_row[17],_row[18],_row[19],_row[20],_row[21],_row[22],_row[23],_row[24],_row[25],_row[26],_row[27],_row[28],_row[29],_row[30],_row[31],_row[32],_row[33]
+        ,_row[34],_row[35],_row[36],_row[37],_row[38],_row[39],_row[40],_row[41],_row[42],_row[43],_row[44],_row[45],_row[46],_row[47],_row[48],_row[49],_row[50]
+        ,_row[51],_row[52],_row[53],_row[54],_row[55],_row[56],_row[57],_row[58],_row[59],_row[60],_row[61],_row[62],_row[63],_row[64],_row[65],_row[66]
+        ,_row[67],_row[68],_row[69],_row[70],_row[71],_row[72],_row[73],_row[74],_row[75],_row[76],_row[77],_row[78],_row[79],_row[80],_row[81]
+        ,_row[82],_row[83],_row[84],_row[85],_row[86],_row[87],_row[88],_row[89],_row[90],_row[91],_row[92],_row[93],_row[94],_row[95],_row[96]
+        ,_row[97],_row[98],_row[99],_row[100],_row[101],_row[102],_row[103],_row[104],_row[105],_row[106],_row[107],_row[108],'2024-06-11 10:21:05.055086','DANIEL',_row[109])
