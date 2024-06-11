@@ -1,113 +1,268 @@
+Sample file with data: SYMW.DENTCAPS.SAMPLE					
+Copybook: SYMW.DENTCAPS.LAYOUT					
+** Full file format with fields in the FILLERs defined: CNRGN.GRID.PARM.PRODLIB(GH23DSPL)					
+Only fields meanings and not types are here: GWLCM.GRID.PROD.CPYLIB0(CPRSRMT0)					
+Field Name	Description	Data Type	Values	Logic	Position of the field in the file
+FILLA		CHAR(001),			/*001*/
+RMT-REC-TYPE	RMT-REC-TYPE	CHAR(04),		"PAYD" to located dentals	/*005*/
+FILLB	Filler	CHAR(002),			/*006*/
+RMT-DATE	RMT-DATE	PIC 9(08),			/*008*/
+Filler	Filler	CHAR(01),			/*016*/
+RMT-OFF-NBR		PIC 9(03),			
+Filler	Filler	CHAR(01),			
+RMT-PLCY	Policy	CHAR(06),			
+Filler	Filler	CHAR(01),			
+RMT-DIV	Division	PIC 9(03),			
+Filler	Filler	CHAR(01),			
+RMT-CLS		PIC 9(03),			
+Filler	Filler	CHAR(01),			
+"RMT-INCURR-DT
+SF - Note: MAX-APPLIES (aka MNI) is buried in this field"		PIC 9(08),		"SF - Convert to a 4 byte COMP (integer).   Then using the dental overlay of this field will give you the MNI:
+FILLER                     PIC X(2)
+RMT-MAX-APPLIES PIC X(1) <== this is MNI
+RMT-DT-UPD          PIC X(1)
+"	
+Filler	Filler	CHAR(02),			
+RMT-POOLING-IND		CHAR(01),			
+Filler	Filler	CHAR(03),			
+RMT-EMP-ID		CHAR(10),			
+Filler	Filler	CHAR(03),			
+RMT-FNAME		CHAR(10),			
+Filler	Filler	CHAR(03),			
+RMT-REL		CHAR(02),			
+Filler	Filler	CHAR(02),			
+RMT-CLM-NBR		PIC 9(03),			
+Filler	Filler	CHAR(01),			
+RMT-TRANS	RMT-TRANS	PIC 999,		Filter all record Types 063	/*084*/
+Filler	Filler	CHAR(02),			/*087*/
+RMT-PLCY-TYPE 		CHAR(02),			
+Filler	Filler	CHAR(02),			
+RMT-INV-NBR		PIC 9(7)			
+Filler	Filler	CHAR(01),			
+RMT-DOB		PIC 9(8)			
+Filler	Filler	CHAR(01),			
+RMT-DT-REC		PIC 9(8)			
+Filler	Filler	CHAR(02),			
+RMT-PAID-PLCY		PIC X(6),		Filter all Policies that belong to PSDCP	/*120*/
+Filler	Filler	CHAR(002),			/*126*/
+RMT-PAID-DIV		PIC 999,			/*128*/
+Filler	Filler	CHAR(01),			/*131*/
+RMT-PAID-CLS		PIC 999,			
+Filler	Filler	CHAR(01),			
+RMT-EE-BANK-ID		PIC 9(9)			
+Filler	Filler	CHAR(01),			
+RMT-NBR		1 character sign plus ZZ9	"Can be + or -
+3 digits has 'eliminating leading zero' feature. If it's a positive number, there is no '+' sign (EX: '   1'), if it's a negative number, the sign will be right before the number and not in first position (EX: '  -1')."		
+Filler	Filler	CHAR(02),			
+RMT-EE-FNAME		CHAR(10),			
+Filler	Filler	CHAR(03),			
+RMT-EE-LNAME		CHAR(20)			
+Filler	Filler	CHAR(03),			
+"RMT-EE-ZIP
+FILLER-ZIP "		CHAR(09)			
+Filler	Filler	CHAR(03),			
+RMT-SEX-EE		CHAR(01),			
+Filler	Filler	CHAR(03),			
+RMT-EE-ST		CHAR(02),			
+Filler	Filler	CHAR(03),			
+RMT-PROV-ST		CHAR(02),			
+Filler	Filler	CHAR(03),			
+RMT-PROV-TYPE		CHAR(02),			
+Filler	Filler	CHAR(03),			
+"RMT-PROV-ZIP
+FILLER-ZIP "		CHAR(09)			
+Filler	Filler	CHAR(03),			
+RMT-SEX		CHAR(01),			
+Filler	Filler	CHAR(03),			
+RMT-RPT-PLCY		CHAR(06),			
+Filler	Filler	CHAR(02),			
+RMT-RPT-DIV		PIC 9(03),			
+Filler	Filler	CHAR(01),			
+RMT-RPT-CLS		PIC 9(03),			
+Filler	Filler	CHAR(01),			
+RMT-DT-PEND-CONS		PIC 9(8)			
+Filler	Filler	CHAR(02),			
+RMT-COB		CHAR(01),			
+Filler	Filler	CHAR(03),			
+RMT-LNAME		CHAR(03), CHAR(20)			
+Filler	Filler	CHAR(02),			
+RMT-CL-SERV-CD		PIC 9(03),			
+Filler	Filler	CHAR(02),			
+RMT-SERVICE-CD		CHAR(06),	"CDA procedure code
+Drugs:
+'INJEC', 'DRG'
 
- for index, row in df.iterrows():
-        _row = row[0].split(",")
-        _row[0] = _row[0].ljust(4)[:4]
-        _row[1] = int(_row[1])
-        _row[2] = int(_row[2])
-        _row[3] = _row[3].ljust(6)[:6]
-        _row[4] = int(_row[4])
-        _row[5] = int(_row[5])
-        _row[6] = int(_row[6])
-        _row[7] = _row[7].ljust(1)[:1]
-        _row[8] = _row[8].ljust(10)[:10]
-        _row[9] = _row[9].ljust(10)[:10]
-        _row[10] = _row[10].ljust(2)[:2]
-        _row[11] = int(_row[11])
-        _row[12] = int(_row[12])
-        _row[13] = _row[13].ljust(2)[:2]
-        _row[14] = int(_row[14])
-        _row[15] = int(_row[15])
-        _row[16] = int(_row[16])
-        _row[17] = _row[17].ljust(6)[:6]
-        _row[18] = int(_row[18])
-        _row[19] = int(_row[19])
-        _row[20] = int(_row[20])
-        _row[21] = int(_row[21])
-        _row[22] = _row[22].ljust(10)[:10]
-        _row[23] = _row[23].ljust(20)[:20]
-        _row[24] = _row[24].ljust(9)[:9]
-        _row[25] = _row[25].ljust(1)[:1]
-        _row[26] = _row[26].ljust(2)[:2]
-        _row[27] = _row[27].ljust(2)[:2]
-        _row[28] = _row[28].ljust(2)[:2]
-        _row[29] = _row[29].ljust(9)[:9]
-        _row[30] = _row[30].ljust(1)[:1]
-        _row[31] = _row[31].ljust(6)[:6]
-        _row[32] = int(_row[32])
-        _row[33] = int(_row[33])
-        _row[34] = int(_row[34])
-        _row[35] = _row[35].ljust(1)[:1]
-        _row[36] = _row[36].ljust(20)[:20]
-        _row[37] = int(_row[37])
-        _row[38] = _row[38].ljust(6)[:6]
-        _row[39] = int(_row[39])
-        _row[40] = _row[40].ljust(1)[:1]
-        _row[41] = _row[41].ljust(1)[:1]
-        _row[42] = float(_row[42])
-        _row[43] = float(_row[43])
-        _row[44] = float(_row[44])
-        _row[45] = float(_row[45])
-        _row[46] = _row[46].ljust(2)[:2]
-        _row[47] = float(_row[47])
-        _row[48] = float(_row[48])
-        _row[49] = float(_row[49])
-        _row[50] = float(_row[50])
-        _row[51] = float(_row[51])
-        _row[52] = float(_row[52])
-        _row[53] = float(_row[53])
-        _row[54] = _row[54].ljust(2)[:2]
-        _row[55] = float(_row[55])
-        _row[56] = float(_row[56])
-        _row[57] = float(_row[57])
-        _row[58] = float(_row[58])
-        _row[59] = int(_row[59])
-        _row[60] = _row[60].zfill(2)[:2]
-        _row[61] = _row[61].ljust(2)[:2]
-        _row[62] = int(_row[62])
-        _row[63] = int(_row[63])
-        _row[64] = int(_row[64])
-        _row[65] = _row[65].ljust(1)[:1]
-        _row[66] = int(_row[66])
-        _row[67] = int(_row[67])
-        _row[68] = int(_row[68])
-        _row[69] = float(_row[69])
-        _row[70] = _row[70].ljust(6)[:6]
-        _row[71] = int(_row[71])
-        _row[72] = float(_row[72])
-        _row[73] = float(_row[73])
-        _row[74] = _row[74].ljust(1)[:1] 
-        _row[75] = _row[75].ljust(1)[:1] # a problem around here 
-        _row[76] = int(_row[76])
-        _row[77] = int(_row[77])
-        _row[78] = int(_row[78])
-        _row[79] = _row[79].ljust(20)[:20]
-        _row[80] = int(_row[80])
-        _row[81] = _row[81].ljust(30)[:30]
-        _row[82] = _row[82].ljust(1)[:1]
-        _row[83] = float(_row[83])
-        _row[84] = int(_row[84])
-        _row[85] = int(_row[85])
-        _row[86] = int(_row[86])
-        _row[87] = int(_row[87])
-        _row[88] = float(_row[88])
-        _row[89] = float(_row[89])
-        _row[90] = float(_row[90])
-        _row[91] = float(_row[91])
-        _row[92] = _row[92].ljust(1)[:1]
-        _row[93] = int(_row[93])
-        _row[94] = int(_row[94])
-        _row[95] = float(_row[95])
-        _row[96] = _row[96].ljust(12)[:12]
-        _row[97] = _row[97].ljust(12)[:12]
-        _row[98] = int(_row[98])
-        _row[99] = int(_row[99])
-        _row[100] = int(_row[100])
-        _row[101] = int(_row[101])
-        _row[102] = int(_row[102])
-        _row[103] = _row[103].ljust(5)[:5]
-        _row[104] = _row[104].ljust(30)[:30]
-        _row[105] = _row[105].ljust(15)[:15]
-        _row[106] = _row[106].ljust(30)[:30]
-        _row[107] = int(_row[107])
-        _row[108] = _row[108].ljust(11)[:11]
-        _row[109] = _row[109].ljust(3)[:3]
+Rest of the codes are non-drugs"		/*292*/
+Filler	Filler	CHAR(02),			/*298*/
+RMT-FST-DT		PIC 9(8)			
+Filler		CHAR(02),			
+RMT-PAY-CD		CHAR(01),			/*310*/
+Filler	Filler	CHAR(03),			/*311*/
+RMT-NON-DUPE		CHAR(01),			
+Filler	Filler	CHAR(02),			
+RMT-CHARGE		 -ZZZZ9.99	"Can be + or -
+5 digits has 'eliminating leading zero' feature. If it's a positive number, there is no '+' sign (EX: '    9.99'), if it's a negative number, the sign will be right before the number and not in first position (EX: '   -9.99')."		
+Filler	Filler	CHAR(01),			
+RMT-NC-AMT		 -ZZZZ9.99	"Can be + or -
+5 digits has 'eliminating leading zero' feature. If it's a positive number, there is no '+' sign (EX: '    9.99'), if it's a negative number, the sign will be right before the number and not in first position (EX: '   -9.99')."		
+Filler	Filler	CHAR(01),			
+RMT-BASE-COV-AMT		 -ZZZZ9.99	"Can be + or -
+5 digits has 'eliminating leading zero' feature. If it's a positive number, there is no '+' sign (EX: '    9.99'), if it's a negative number, the sign will be right before the number and not in first position (EX: '   -9.99')."		
+Filler	Filler	CHAR(01),			
+RMT-BASE-DED-AMT		 -ZZZZ9.99	"Can be + or -
+5 digits has 'eliminating leading zero' feature. If it's a positive number, there is no '+' sign (EX: '    9.99'), if it's a negative number, the sign will be right before the number and not in first position (EX: '   -9.99')."		
+Filler	Filler	CHAR(02),			
+RMT-BASE-DED-DESC		CHAR(02),			
+Filler	Filler	CHAR(02),			
+RMT-BASE-PCT		9(1).9(2)			
+Filler	Filler	CHAR(01),			
+RMT-BASE-WD-PAY		 -ZZZZ9.99	"Can be + or -
+5 digits has 'eliminating leading zero' feature. If it's a positive number, there is no '+' sign (EX: '    9.99'), if it's a negative number, the sign will be right before the number and not in first position (EX: '   -9.99')."		
+Filler	Filler	CHAR(01),			
+RMT-BASE-AMT		 -ZZZZ9.99	"Can be + or -
+5 digits has 'eliminating leading zero' feature. If it's a positive number, there is no '+' sign (EX: '    9.99'), if it's a negative number, the sign will be right before the number and not in first position (EX: '   -9.99')."		
+Filler	Filler	CHAR(01),			
+RMT-MM-COV-AMT		 -ZZZZ9.99	"Can be + or -
+5 digits has 'eliminating leading zero' feature. If it's a positive number, there is no '+' sign (EX: '    9.99'), if it's a negative number, the sign will be right before the number and not in first position (EX: '   -9.99')."		
+Filler	Filler	CHAR(01),			
+RMT-MM-DED-AMT		 -ZZZZ9.99	"Can be + or -
+5 digits has 'eliminating leading zero' feature. If it's a positive number, there is no '+' sign (EX: '    9.99'), if it's a negative number, the sign will be right before the number and not in first position (EX: '   -9.99')."		
+Filler	Filler	CHAR(01),			
+RMT-MM-WD-PAY		 -ZZZZ9.99	"Can be + or -
+5 digits has 'eliminating leading zero' feature. If it's a positive number, there is no '+' sign (EX: '    9.99'), if it's a negative number, the sign will be right before the number and not in first position (EX: '   -9.99')."		
+Filler	Filler	CHAR(01),			
+RMT-MM-AMT		 -ZZZZ9.99	"Can be + or -
+5 digits has 'eliminating leading zero' feature. If it's a positive number, there is no '+' sign (EX: '    9.99'), if it's a negative number, the sign will be right before the number and not in first position (EX: '   -9.99')."		
+Filler	Filler	CHAR(02),			
+RMT-MM-DED-DESC		CHAR(02),			
+Filler	Filler	CHAR(02),			
+RMT-MM-PCT		9(1).9(2)			
+Filler	Filler	CHAR(01),			
+RMT-BASE-OI-AMT		 -ZZZZ9.99	"Can be + or -
+5 digits has 'eliminating leading zero' feature. If it's a positive number, there is no '+' sign (EX: '    9.99'), if it's a negative number, the sign will be right before the number and not in first position (EX: '   -9.99')."		
+Filler	Filler	CHAR(01),			
+RMT-MM-OI-AMT		 -ZZZZ9.99	"Can be + or -
+5 digits has 'eliminating leading zero' feature. If it's a positive number, there is no '+' sign (EX: '    9.99'), if it's a negative number, the sign will be right before the number and not in first position (EX: '   -9.99')."		
+Filler	Filler	CHAR(01),			
+RMT-CR-RES-AMT		 -ZZZZ9.99	"Can be + or -
+5 digits has 'eliminating leading zero' feature. If it's a positive number, there is no '+' sign (EX: '    9.99'), if it's a negative number, the sign will be right before the number and not in first position (EX: '   -9.99')."		
+Filler	Filler	CHAR(01),			
+RMT-DFT-NBR		PIC 9(10)			
+Filler	Filler	CHAR(02),			
+RMT-OVR-CD	Override Code	CHAR(02),			/*479*/
+FILLI	Filler	CHAR(003),			/*481*/
+RMT-REMARK-CD	Remark Code	CHAR(02),			/*484*/
+Filler	Filler	CHAR(02),			/*486*/
+RMT-BANK-CD		PIC 9(3)			
+Filler	Filler	CHAR(01),			
+RMT-COB-CD		PIC 9(3)			
+Filler	Filler	CHAR(01),			
+RMT-SIN-NBR		PIC 9(9)			
+Filler	Filler	CHAR(02),			
+RMT-FIRST-SUBSEQ		CHAR(01),			
+Filler	Filler	CHAR(02),			
+RMT-PAY-LOC		PIC 9(3)			
+Filler	Filler	CHAR(01),			
+RMT-SAV-TYPE		PIC 9(2)			
+Filler	Filler	CHAR(01),			
+RMT-DEP-NBR		PIC 9(2)			
+Filler	Filler	CHAR(01),			
+RMT-POOLING-AMT		 -ZZZZ9.99	"Can be + or -
+5 digits has 'eliminating leading zero' feature. If it's a positive number, there is no '+' sign (EX: '    9.99'), if it's a negative number, the sign will be right before the number and not in first position (EX: '   -9.99')."		
+Filler	Filler	CHAR(02),			
+RMT-CAUSE		CHAR(06),			
+Filler	Filler	CHAR(02),			
+RMT-LST-DT		PIC 9(8)			
+Filler	Filler	CHAR(01),			
+RMT-SUP-WD-PAY		 -ZZZZ9.99	"Can be + or -
+5 digits has 'eliminating leading zero' feature. If it's a positive number, there is no '+' sign (EX: '    9.99'), if it's a negative number, the sign will be right before the number and not in first position (EX: '   -9.99')."		
+Filler	Filler	CHAR(01),			
+RMT-SUP-AMT		 -ZZZZ9.99	"Can be + or -
+5 digits has 'eliminating leading zero' feature. If it's a positive number, there is no '+' sign (EX: '    9.99'), if it's a negative number, the sign will be right before the number and not in first position (EX: '   -9.99')."		
+Filler	Filler	CHAR(06),			
+RMT-PROD-CODE		CHAR(01),			
+Filler	Filler	CHAR(02),			
+RMT-DIS-CD		PIC 9(7)			
+Filler	Filler	CHAR(02),			
+RMT-OCP-CD		PIC 9(1)			
+Filler	Filler	CHAR(03),			
+RMT-PROV-SCRN-NBR		PIC 9(1)			
+Filler	Filler	CHAR(02),			
+RMT-PROV-TEL-NBR		PIC 9(12)			
+Filler	Filler	CHAR(02),			
+RMT-DIAG		CHAR(20),			
+Filler	Filler	CHAR(02),			
+RMT-PROV-TIN		PIC 9(9)			
+Filler	Filler	CHAR(02),			
+RMT-PROV-NAME		CHAR(30),			
+Filler	Filler	CHAR(03),			
+RMT-PROV-ID-TYPE		CHAR(01),			
+Filler	Filler	CHAR(02),			
+RMT-OI-CON-AMT		 -ZZZZ9.99	"Can be + or -
+5 digits has 'eliminating leading zero' feature. If it's a positive number, there is no '+' sign (EX: '    9.99'), if it's a negative number, the sign will be right before the number and not in first position (EX: '   -9.99')."		
+Filler	Filler	CHAR(01),			
+RMT-ADJ-NBR	Adjustment Number	9(06),			/*685*/
+Filler	Filler	CHAR(01),			/*691*/
+RMT-SUB-ACCT-CD		9(01),			
+Filler	Filler	CHAR(01),			
+RMT-TYPE		9(01),			
+Filler	Filler	CHAR(01),			
+RMT-CLIENT-SIZE		9(01),			
+Filler	Filler	CHAR(01),			
+RMT-BASE-SCHED-AMT		 -ZZZZ9.99	"Can be + or -
+5 digits has 'eliminating leading zero' feature. If it's a positive number, there is no '+' sign (EX: '    9.99'), if it's a negative number, the sign will be right before the number and not in first position (EX: '   -9.99')."		
+Filler	Filler	CHAR(01),			
+RMT-MM-SCHED-AMT		 -ZZZZ9.99	"Can be + or -
+5 digits has 'eliminating leading zero' feature. If it's a positive number, there is no '+' sign (EX: '    9.99'), if it's a negative number, the sign will be right before the number and not in first position (EX: '   -9.99')."		
+Filler	Filler	CHAR(01),			
+RMT-PROV-ASP		-999.99	Can be + or -.  If it's a positive number, the first character is blank  (EX: ' 999.99'), if it's a negative number, the first character will be '-'.  (EX: '-999.99').  Leading zeros are displayed (EX: ' 000.00' or '-001.99')		
+Filler	Filler	CHAR(01),			
+RMT-PROV-WARD		-999.99	Can be + or -.  If it's a positive number, the first character is blank  (EX: ' 999.99'), if it's a negative number, the first character will be '-'.  (EX: '-999.99').  Leading zeros are displayed (EX: ' 000.00' or '-001.99')		
+Filler	Filler	CHAR(02),			
+RMT-EFT-IND		CHAR(01),			
+Filler	Filler	CHAR(02),			
+RMT-TIME		9(07),			
+Filler	Filler	CHAR(01),			
+RMT-CTL-NBR-CONS-DFT		9(10),			
+Filler	Filler	CHAR(07),			
+RMT-DRAFT-AMT		 -ZZZZ9.99	"Can be + or -
+5 digits has 'eliminating leading zero' feature. If it's a positive number, there is no '+' sign (EX: '    9.99'), if it's a negative number, the sign will be right before the number and not in first position (EX: '   -9.99')."		
+Filler	Filler	CHAR(02),			
+RMT-EE-BANK-ACCT		CHAR(12),			
+Filler	Filler	CHAR(02),			
+RMT-DLR-CLM-NBR		9(06),			
+Filler	Filler	CHAR(01),			
+RMT-LT-BEG-DT		9(08),			
+Filler	Filler	CHAR(01),			
+RMT-LT-TERM-DT		9(08),			
+Filler	Filler	CHAR(01),			
+RMT-LT-MAX-EXP-DT		9(08),			
+Filler	Filler	CHAR(01), CHAR(11)			
+RMT-TEETH		PIC 9(16) PIC 9(6)			
+					
+					
+					
+					
+					
+Filler	Filler	CHAR(01),			
+RMT-PPC-CD		9(06),			
+Filler	Filler	CHAR(02),			
+RMT-SURFACE-CD		CHAR(05),			
+Filler	Filler	CHAR(03),			
+RMT-EE-ADDR		CHAR(30),			
+Filler	Filler	CHAR(03),			
+RMT-EE-CITY		CHAR(15),			
+Filler	Filler	CHAR(03),			
+RMT-PROV-ADDR		CHAR(30),			
+Filler	Filler	CHAR(02),			
+RMT-DINN		9(08),			
+Filler	Filler	CHAR(02),			
+RMT-CIDE	Claim ID	CHAR(11),			/*948*/
+Filler	Filler	CHAR(03),			/*959*/
+RMT-CALI		CHAR(03),			
+Filler	Filler	CHAR(01),			
+					
+					
+					
+** Full file format with fields in the FILLERs defined: CNRGN.GRID.PARM.PRODLIB(GH23DSPL)					
+Only fields meanings and not types are here: GWLCM.GRID.PROD.CPYLIB0(CPRSRMT0)					
