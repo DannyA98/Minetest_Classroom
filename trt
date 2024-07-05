@@ -1,0 +1,104 @@
+import csv
+import os
+import logging
+import pandas as pd
+
+
+def extract_table_name(script_name):
+    parts = script_name.split("_")
+
+    if len(parts) > 1:
+        return parts[1].split(".")[0].lower()
+
+    raise ValueError("Invalid script name.")
+
+
+def clean_field(field):
+    return field.strip().replace('"', "").replace(" ", "")
+
+
+def process_file(input_file_path, output_file_path):
+    with open(input_file_path, "r") as infile, open(
+        output_file_path, "w", newline=""
+    ) as outfile:
+        writer = csv.writer(outfile, delimiter=",")
+        # writer.writerow(headers)
+
+        for line in infile:
+            fields = [clean_field(field) for field in line.strip().split("|")]
+            writer.writerow(fields)
+
+
+def process_specific_file(input_dir, output_dir, script_name, table_name=""):
+    table_name = extract_table_name(script_name) if table_name == "" else table_name
+    logging.info("GH09ADJ table name successfully extracted")
+
+    input_file_path = os.path.join(input_dir, f"{table_name.upper()}.txt")
+    output_file_path = os.path.join(output_dir, f"{table_name}.csv")
+
+    # Delete the specific output file if it exists
+    if os.path.exists(output_file_path):
+        os.remove(output_file_path)
+
+    # Process the specific input file if it exists
+    if os.path.exists(input_file_path):
+        # headers = [
+        #     "POLICY_NUMBER",
+        #     "CLIENT_ID",
+        #     "RESTRICT_REASON",
+        #     "COMMENT",
+        #     "INSERT_TS",
+        #     "INSERT_ID",
+        #     "UPDATE_ID",
+        #     "UPDATE_TS",
+        #     "FMS_SAS_IND",
+        #     "TARGET_ID",
+        # ]
+
+        process_file(input_file_path, output_file_path)
+        logging.info("GH09ADJ successfully processed, delimiter also removed")
+
+        print(f"Processed {input_file_path}")
+    else:
+        print(f"Input file {input_file_path} does not exist.")
+
+
+def merge_csv_files(first_file_path, second_file_path, output_file_path):
+    first_df = pd.read_csv(first_file_path, delimiter="|")
+    second_df = pd.read_csv(second_file_path, delimiter="|")
+
+    shared_column = set(first_df.columns) & set(second_df.columns)
+    # look for exactly 1 shared column
+    if len(shared_column) != 1:
+        raise ValueError("The CSV files do not have exactly one shared column.")
+    shared_column = shared_column.pop()
+
+    merged_df = pd.concat([first_df, second_df], axis=0)
+
+    merged_df.to_csv(output_file_path, sep=',', index=False)
+
+
+input_dir = "./sample-data"
+output_dir = "./sample-output"
+
+script_name = os.path.basename(__file__)
+
+# Create output directory if it doesn't exist
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+
+logging.info("GH09ADJ cleaning process started")
+
+try:
+    process_specific_file(input_dir, output_dir, script_name, "GH09ADJC")
+    process_specific_file(input_dir, output_dir, script_name, "GH09ADJD")
+
+    merge_csv_files(
+        "./sample-output/GH09ADJC.csv",
+        "./sample-output/GH09ADJD.csv",
+        "./sample-output/GH09ADJ.csv",
+    )
+except Exception as e:
+    logging.getLogger("error_logger").error(
+        f"Error occurred in GH09ADJ processing: {e}"
+    )
