@@ -34,7 +34,6 @@ const renderExpense = (expense, index, expenses, setExpenses, selectedCreditType
     };
 
 
-    const creditTypes = ["Credit Type 1", "Credit Type 2", "Credit Type 3"];
     const serviceCreditMap = {
         "4.3.2.1 90% of Paper Treatment Plan Requests processed within seven Days": "4.3.2.1",
         "4.3.2.2 90% of Digital Services Treatment Plan Requests adjudicated within seven Days": "4.3.2.2",
@@ -69,7 +68,9 @@ const renderExpense = (expense, index, expenses, setExpenses, selectedCreditType
       
     };
 
-    const today = new Date().toISOString().split('T')[0];
+
+
+    
 
     const handleExpenseChange = (index, field, value) => {
         let isDuplicate = false;
@@ -91,15 +92,16 @@ const renderExpense = (expense, index, expenses, setExpenses, selectedCreditType
 
         } else if (field === 'startDate') {
             const date = new Date(value);
-            const nextDay = addDays(date, 2);
-            const firstDayOfMonth = startOfMonth(nextDay).toISOString().split('T')[0];
+            const firstDayOfMonth = date.toISOString().split('T')[0];
             expenses[index].startDate = firstDayOfMonth;
-            console.log(expenses[index].startDate)
+            console.log(date)
             expenses[index].step = Math.max(expenses[index].step, 2); // Advance to at least step 2
 
         } else if (field === 'endDate') {
             const date = new Date(value);
-            const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).toISOString().split('T')[0];
+            const nextDay = new Date(date);
+            nextDay.setDate(date.getDate() + 1); // Add one day
+            const lastDayOfMonth = new Date(nextDay.getFullYear(), date.getMonth() + 1, 0).toISOString().split('T')[0];
             expenses[index].endDate = lastDayOfMonth;
             expenses[index].step = Math.max(expenses[index].step, 3); // Advance to at least step 3
 
